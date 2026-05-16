@@ -1,1 +1,1 @@
-hello world
+general idea: have a ton of farms w/ locations and products and output x closest farms in order of distance to a particular location narrowed by products
