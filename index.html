@@ -27,14 +27,23 @@
                 ["ocean view farms", 34.0008, -118.4366, ""],
                 ["enriched farms", 34.0171, -118.3447, ""],
             ]
-            function farmsort(lat, long){
-                const dists = []
+            function farmsort(){
+                var dists = [];
+                var latlong = document.getElementById("location");
                 for(let i=0; i<20; ++i){
-                    dists[i].push((((farms[i][1]-lat)^2)+((farms[i][2]-long)^2)), i)
+                    dists.push([(((farms[i][1]-latlong.elements[0].value)^2)+((farms[i][2]-latlong.elements[0].value)^2)), i])
                 }
-                dists.sort(dists.begin(), dists.end());
-                return dists;
-            }
+                dists.sort();
+                var text = "";
+                for (let i=0; i<10; ++i){
+                    text += farms[dists[i][1]][0];
+                    text += "; ";
+                    text += farms[dists[i][1]][3];
+                    listvar = "list" + String(i)
+                    document.getElementById(listvar).innerHTML = text;
+                    text = ""
+                }
+                        }
         </script>
         <style>
             body {
@@ -105,8 +114,8 @@
             <a href="#"> </a>
             <a href="#"> </a>
             <a href="#">HOME</a>
-            <a href="#">AWAY</a>
-            <a href="#">CREDITS</a>
+            <a href="https://companyname.website">AWAY</a>
+            <a href="credits.html">CREDITS</a>
         </div>
         <div class="announcer">
             <h1>organically bettering communities' diets</h1>
@@ -128,7 +137,7 @@
             </p>"
         </div>
         <div style="display:flex; align-items: left; gap:300px;">
-        <table>
+        <table style="padding-left:20px;">
             <tr>
                 <td>
                     input your location (we do nothing nefarious):<br>
@@ -136,9 +145,21 @@
             <form id="location">
                 latitude: <input type="number" name="lat">
                 longitude: <input type="number" name="long">
+                <input type="button" onclick="farmsort()" value="make the best decision of your life">
             </form>
             
         </div>
+        <p id="list0"></p>
+        <p id="list1"></p>
+        <p id="list2"></p>
+        <p id="list3"></p>
+        <p id="list4"></p>
+        <p id="list5"></p>
+        <p id="list6"></p>
+        <p id="list7"></p>
+        <p id="list8"></p>
+        <p id="list9"></p>
+
         </td>
         <td>
         <div class="calimg">
@@ -151,3 +172,4 @@
         
         </div>
     </body>
+    </html>
