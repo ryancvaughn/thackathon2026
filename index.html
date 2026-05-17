@@ -4,6 +4,38 @@
         <title>farm connection</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            const farms = [
+                ["san diego organic farms", 33.0419, -116.8687, "greens & veggies"],
+                ["a la vuelta farm", 32.7136, -117.0957, "greens & veggies"],
+                ["jamul farms", 32.7170, -117.0957, "produce & fruit"],
+                ["pixca farm", 32.5560, -117.0837, "heirloom crops & greens"],
+                ["cyclops farms", 33.1957, -117.3431, "greens & herbs"],
+                ["kare farms", 32.8037, -117.1298, "greens & herbs"],
+                ["stehly farms organics", 33.2393, -116.8962, "citrus, avocadoes, & produce"],
+                ["napoli farms", 32.7493, -117.1048, "kale & greens"],
+                ["wild willow farm & education centre", 32.5535787, -117.0800368, "this one exports knowledge. worth a look"],
+                ["three sons farm", 33.2804, -117.1245, "mixed produce & seasonal veggies"],
+                ["wattles farm", 34.1035, -118.3462, ""],
+                ["mt. whitney ranch", 34.0622, -118.4527, ""],
+                ["kenter canyon farms", 34.2476, -118.4005, ""],
+                ["lakeview farms", 34.0082, -118.1510, ""],
+                ["city greens community farm", 34.0620, -118.4455, ""],
+                ["t & a farms llc", 34.0917, -118.2717, ""],
+                ["red heifer organic farms", 34.0361, -118.3848, ""],
+                ["rose lane farms", 34.2012, -118.3848, ""],
+                ["ocean view farms", 34.0008, -118.4366, ""],
+                ["enriched farms", 34.0171, -118.3447, ""],
+            ]
+            function farmsort(lat, long){
+                const dists = []
+                for(let i=0; i<20; ++i){
+                    dists[i].push((((farms[i][1]-lat)^2)+((farms[i][2]-long)^2)), i)
+                }
+                dists.sort(dists.begin(), dists.end());
+                return dists;
+            }
+        </script>
         <style>
             body {
                 font-family: 'Courier New', 'Courier', monospace;
@@ -54,10 +86,15 @@
                 flex: 50%;
             }
             .calimg{
+                float:right;
+                padding-left:400px;
+                margin:21px;
                 -ms-flex: 50%;
                 flex: 50%;
             }
             .doohickey{
+                padding-top:0px;
+                margin:28px;
                 -ms-flex: 50%;
                 flex: 50%;
             }
@@ -69,7 +106,7 @@
             <a href="#"> </a>
             <a href="#">HOME</a>
             <a href="#">AWAY</a>
-            <a href="#">BALL</a>
+            <a href="#">CREDITS</a>
         </div>
         <div class="announcer">
             <h1>organically bettering communities' diets</h1>
@@ -90,11 +127,27 @@
                     unforunately, the story of agriculture being corrupted by middlemen is common, and the tale may be all too familiar to a subset of the population that is altogether too large to be tolerated. sysco is a prominent example of that - you, dear reader, have very probably seen at least one of their trucks about your town or wherever it is you live. i don't like to pry, you see. sysco is a food distribution company that, so they claim, gets nutrition from point a (the farm) to point b (the co 
             </p>"
         </div>
+        <div style="display:flex; align-items: left; gap:300px;">
+        <table>
+            <tr>
+                <td>
+                    input your location (we do nothing nefarious):<br>
         <div class="doohickey">
-
+            <form id="location">
+                latitude: <input type="number" name="lat">
+                longitude: <input type="number" name="long">
+            </form>
+            
         </div>
+        </td>
+        <td>
         <div class="calimg">
             <img src="https://t3.ftcdn.net/jpg/18/74/73/92/360_F_1874739274_5QHh1CAxji3SjEiq3WQtnOr6z1H3nMXG.jpg" style="margin-top:50px; margin-bottom:150px;">
         </div>
+        </td>
+        </tr>
+        </table>
+        </div>
+        
         </div>
     </body>
